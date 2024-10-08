@@ -1,5 +1,6 @@
 package pkgfinal;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class Book implements IBook {
@@ -18,12 +19,9 @@ public abstract class Book implements IBook {
         this.quantity = quantity;
     }
 
+    // Getters and Setters
     public String getBookId() {
         return bookId;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
     }
 
     public String getPublisher() {
@@ -58,9 +56,20 @@ public abstract class Book implements IBook {
         this.quantity = quantity;
     }
 
+    // Abstract methods
+    public abstract double calculateDiscount();
+
+    @Override
+    public abstract void addBook();
+
+    @Override
+    public abstract void updateBook(String id);
+
     @Override
     public abstract void displayBook();
 
     @Override
-    public abstract void updateBook(String id);
+    public double calculateTotal() {
+        return getUnitPrice() * getQuantity() * (1 - calculateDiscount());
+    }
 }

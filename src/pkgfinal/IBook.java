@@ -7,4 +7,6 @@ public interface IBook {
     void updateBook(String id);
 
     void displayBook();
+
+    double calculateTotal();
 }
