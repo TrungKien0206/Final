@@ -2,21 +2,17 @@ package pkgfinal;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 public class TextBook extends Book {
-
     private String status;
 
+    // Constructor
     public TextBook(String bookId, String publisher, Date entryDate, double unitPrice, double quantity, String status) {
         super(bookId, publisher, entryDate, unitPrice, quantity);
         this.status = status;
     }
 
-    public TextBook() {
-    }
-
-    
+    // Getter and Setter for status
     public String getStatus() {
         return status;
     }
@@ -26,52 +22,49 @@ public class TextBook extends Book {
     }
 
     @Override
-    public double calculateDiscount() {
-        return getQuantity() > 10 ? 0.1 : 0.05;
-    }
-
-    @Override
     public void addBook() {
-        System.out.println("TextBook added.");
-        displayBook();
+        System.out.println("Text book has been added with ID: " + getBookId());
     }
 
     @Override
     public void updateBook(String id) {
-        Scanner scanner = new Scanner(System.in);
-        if (getBookId().equals(id)) {
-            System.out.println("Updating TextBook ID: " + id);
-            System.out.println("Enter new Publisher:");
-            setPublisher(scanner.nextLine());
-            System.out.println("Enter new Entry Date (dd/MM/yyyy):");
-            try {
-                String dateStr = scanner.nextLine();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                setEntryDate(dateFormat.parse(dateStr));
-            } catch (Exception e) {
-                System.out.println("Invalid date format.");
-            }
-            System.out.println("Enter new Unit Price:");
-            setUnitPrice(scanner.nextDouble());
-            System.out.println("Enter new Quantity:");
-            setQuantity(scanner.nextDouble());
-            scanner.nextLine(); 
-            System.out.println("Enter new Status:");
-            setStatus(scanner.nextLine());
-            System.out.println("TextBook updated.");
+        if (id.equals(getBookId())) {
+            System.out.println("Text book with ID: " + id + " has been updated.");
         } else {
-            System.out.println("Book ID does not match.");
+            System.out.println("Book ID not found.");
         }
     }
 
     @Override
     public void displayBook() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("TextBook ID: " + getBookId());
+        System.out.println("-------- Text Book --------");
+        System.out.println("Book ID: " + getBookId());
         System.out.println("Publisher: " + getPublisher());
         System.out.println("Entry Date: " + dateFormat.format(getEntryDate()));
         System.out.println("Unit Price: " + getUnitPrice());
         System.out.println("Quantity: " + getQuantity());
         System.out.println("Status: " + getStatus());
+        System.out.println("Discount: " + calculateDiscount());
+        System.out.println("Total Amount: " + calculateTotal());
+        System.out.println("--------------------------");
+    }
+
+    @Override
+    public double calculateDiscount() {
+        // Calculate discount based on status
+        double discount = 0;
+        if ("new".equalsIgnoreCase(status)) {
+            discount = getQuantity() * getUnitPrice() * 0.10; // 10% discount for new books
+        } else if ("old".equalsIgnoreCase(status)) {
+            discount = getQuantity() * getUnitPrice() * 0.50; // 50% discount for old books
+        }
+        return discount;
+    }
+
+    @Override
+    public double calculateTotal() {
+        double discount = calculateDiscount();
+        return (getQuantity() * getUnitPrice()) - discount;
     }
 }
