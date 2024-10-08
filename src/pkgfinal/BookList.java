@@ -10,13 +10,11 @@ public class BookList {
         bookList = new ArrayList<>();
     }
 
-    // Add book
     public void addBook(Book book) {
         bookList.add(book);
         System.out.println("Book added successfully!");
     }
 
-    // Update book by ID
     public void updateBook(String id) {
         for (Book book : bookList) {
             if (book.getBookId().equals(id)) {
@@ -27,13 +25,11 @@ public class BookList {
         System.out.println("Book ID not found.");
     }
 
-    // Delete book by ID
     public void deleteBookById(String id) {
         bookList.removeIf(book -> book.getBookId().equals(id));
         System.out.println("Book deleted successfully.");
     }
 
-    // Find book by ID
     public Book findBookById(String id) {
         for (Book book : bookList) {
             if (book.getBookId().equals(id)) {
@@ -44,7 +40,6 @@ public class BookList {
         return null;
     }
 
-    // Display all books
     public void displayAllBooks() {
         for (Book book : bookList) {
             book.displayBook();
@@ -52,7 +47,6 @@ public class BookList {
         }
     }
 
-    // Calculate total amount of all books
     public double calculateTotalAmount() {
         double total = 0;
         for (Book book : bookList) {

@@ -19,7 +19,10 @@ public abstract class Book implements IBook {
         this.quantity = quantity;
     }
 
-    // Getters and Setters
+    public Book() {
+    }
+
+    
     public String getBookId() {
         return bookId;
     }
@@ -56,7 +59,6 @@ public abstract class Book implements IBook {
         this.quantity = quantity;
     }
 
-    // Abstract methods
     public abstract double calculateDiscount();
 
     @Override

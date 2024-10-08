@@ -21,7 +21,7 @@ public class Processor {
             System.out.println("6. Exit");
             System.out.print("Choose an option: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
@@ -41,13 +41,13 @@ public class Processor {
                     double unitPrice = scanner.nextDouble();
                     System.out.print("Enter Quantity: ");
                     double quantity = scanner.nextDouble();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
 
                     System.out.println("Enter Book Type: ");
                     System.out.println("1. TextBook");
                     System.out.println("2. ReferenceBook");
                     int type = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
 
                     Book book = null;
 

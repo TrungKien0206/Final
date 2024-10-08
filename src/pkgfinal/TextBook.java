@@ -13,7 +13,10 @@ public class TextBook extends Book {
         this.status = status;
     }
 
-    // Getters and Setters
+    public TextBook() {
+    }
+
+    
     public String getStatus() {
         return status;
     }
@@ -52,7 +55,7 @@ public class TextBook extends Book {
             setUnitPrice(scanner.nextDouble());
             System.out.println("Enter new Quantity:");
             setQuantity(scanner.nextDouble());
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine(); 
             System.out.println("Enter new Status:");
             setStatus(scanner.nextLine());
             System.out.println("TextBook updated.");

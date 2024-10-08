@@ -13,7 +13,10 @@ public class ReferenceBook extends Book {
         this.tax = tax;
     }
 
-    // Getters and Setters
+    public ReferenceBook() {
+    }
+
+    
     public double getTax() {
         return tax;
     }
@@ -31,7 +34,8 @@ public class ReferenceBook extends Book {
     @Override
     public double calculateTotal() {
         double discount = calculateDiscount();
-        return (getQuantity() * getUnitPrice()) + getTax() - discount;    }
+        return (getQuantity() * getUnitPrice()) + getTax() - discount;
+    }
 
     @Override
     public void addBook() {
